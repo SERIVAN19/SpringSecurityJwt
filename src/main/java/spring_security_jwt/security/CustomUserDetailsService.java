@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+    // loadUserByUsername es el método que se encarga de cargar un usuario por su nombre de usuario (email en este caso)
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
