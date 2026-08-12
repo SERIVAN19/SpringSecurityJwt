@@ -33,6 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             );
         }
 
+        //Construimos un objeto UserDetails a partir del usuario encontrado
         return org.springframework.security.core.userdetails.User //User de Spring Security
                 .withUsername(user.getEmail())
                 .password(user.getPassword())

@@ -22,13 +22,11 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-
     // PasswordEncoder es el encargado de encriptar las contraseñas
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     // SecurityFilterChain es el encargado de configurar la seguridad de la aplicación
     // Se encarga de configurar la seguridad de la aplicación
@@ -38,7 +36,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/register").permitAll()
+                        .requestMatchers("/users/register",
+                                                    "/auth/login")
+                        .permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
