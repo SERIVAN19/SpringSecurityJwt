@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
+    // register es el método que se encarga de registrar un nuevo usuario
     @Override
     public User register(RegisterRequest request) {
 

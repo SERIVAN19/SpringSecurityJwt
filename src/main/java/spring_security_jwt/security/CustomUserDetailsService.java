@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+    // loadUserByUsername es el método que se encarga de cargar un usuario por su nombre de usuario (email en este caso)
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
@@ -32,6 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             );
         }
 
+        //Construimos un objeto UserDetails a partir del usuario encontrado
         return org.springframework.security.core.userdetails.User //User de Spring Security
                 .withUsername(user.getEmail())
                 .password(user.getPassword())
