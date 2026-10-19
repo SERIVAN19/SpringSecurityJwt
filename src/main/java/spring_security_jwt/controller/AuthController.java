@@ -15,12 +15,13 @@ import spring_security_jwt.dto.LoginRequest;
 @RequiredArgsConstructor
 public class AuthController {
 
+    //Inyectamos el AuthenticationManager para poder autenticar al usuario
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request){
 
-        System.out.println("Entró al login");
+        System.out.println("Entró al login"); // Comprobamos que entró al login
 
         Authentication authentication =
                 new UsernamePasswordAuthenticationToken( //Representa un usuario que quiere autenticarse

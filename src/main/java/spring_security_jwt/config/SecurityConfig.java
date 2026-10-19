@@ -1,5 +1,6 @@
 package spring_security_jwt.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,16 +10,20 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import spring_security_jwt.security.JwtAuthenticationFilter;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    //Dependencias
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     // AuthenticationManager es el encargado de autenticar a los usuarios
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration)
             throws Exception {
-
         return configuration.getAuthenticationManager();
     }
 

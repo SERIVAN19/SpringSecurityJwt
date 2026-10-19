@@ -23,7 +23,7 @@ public class JwtService {
 
     // Transforma la clave secreta en un objeto SecretKey para firmar el token
     private SecretKey getSignInKey() {
-        return Keys.hmacShaKeyFor(
+        return Keys.hmacShaKeyFor( //Keys -> adapta de String a SecretkEY
                 secret.getBytes(StandardCharsets.UTF_8)
         );
     }
@@ -84,6 +84,7 @@ public class JwtService {
 
     //Verifica dos cosas
     //Comprueba que el usuario del token coincide con el usuario recuperado por UserDetailsService
+    //Comprueba que todavía sigue vigente.
     public boolean isTokenValid(String token, UserDetails userDetails){
         String username = extractUsername(token);
 
